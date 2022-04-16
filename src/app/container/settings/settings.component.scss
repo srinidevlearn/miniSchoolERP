@@ -1,0 +1,23 @@
+
+
+$sec-nav-font-color: #9a67ea;
+$sec-nav-bg:linear-gradient(to right, rgb(196, 181, 253), rgb(167, 139, 250));//:#9c27b0;
+$circular-radius: 50%;
+
+.secondary-nav-container{
+    height: calc(100vh - 4.8rem);
+    & mat-drawer-content{
+            height: calc(100vh - 5rem);
+            overflow-y: auto;
+
+    }
+    & mat-drawer{
+        width:12rem;
+        padding:0;
+        border-radius: 10px;
+        border:none;
+        background:$sec-nav-bg
+    }
+}
+a.menu-button{
+}

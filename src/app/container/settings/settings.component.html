@@ -1,0 +1,36 @@
+<mat-drawer-container class="secondary-nav-container" [hasBackdrop]="false">
+    <mat-drawer mode="side" opened [style.width.rem]="showMenuText === true ? 12 : 4">
+        <!-- <div class="text-center" matTooltip="Primary Navigation" [matTooltipTouchGestures]="'auto'"
+            [matTooltipPosition]="'right'">
+            <small style="font-size: 0.5rem;">SecondaryNav</small></div> -->
+
+        <a class="menu-button" mat-ripple (click)="toggleMenuText()" style="cursor: pointer;">
+            <div mat-button class="menu-button d-flex align-items-center py-2 px-0 collapse"
+                [class.justify-content-center]="!showMenuText">
+                <div>
+                    <mat-icon [ngClass]="showMenuText === true ? 'ms-2' :'ms-0'">{{showMenuText === true ? ' keyboard_double_arrow_left' : ' keyboard_double_arrow_right'}}
+                    </mat-icon>
+                </div>
+                <div class="ms-3" *ngIf="showMenuText"><span class="fs-6 pb-2">Collapse</span></div>
+
+            </div>
+        </a>
+        <ng-container *ngFor="let item of sideNavDetails">
+            <a class="menu-button" mat-ripple routerLink="{{item?.modifiedURL}}" routerLinkActive="active"
+                [ngClass]="(item.url | activeUrlMatcher : currentNav) === 'active' ? 'active' : ''">
+
+                <div class="d-flex align-items-center py-2 px-2" [class.justify-content-center]="!showMenuText"
+                    role="button" mat-button>
+                    <div>
+                        <mat-icon class="ms-0">{{item.icon}}</mat-icon>
+                    </div>
+                    <div class="ms-2" *ngIf="showMenuText"><span class="fs-6 pb-1"> {{item.label}}</span></div>
+                </div>
+
+            </a>
+        </ng-container>
+    </mat-drawer>
+    <mat-drawer-content [style.marginLeft.rem]="leftMarginDecider" class="shadow-sm">
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

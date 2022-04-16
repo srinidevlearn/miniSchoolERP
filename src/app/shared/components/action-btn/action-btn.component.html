@@ -1,0 +1,31 @@
+<!-- <button (click)="btnClickedHandler($event)">Click me!</button> -->
+<button type="button" mat-button class="w-100 m-0 p-0" [matMenuTriggerFor]="menu" (click)="dynamicallyLoadMenu()">
+    Action
+</button>
+<mat-menu #menu="matMenu" class="shadow-sm m-0" style="font-size: 0.75rem;">
+    <ng-container *ngFor="let menu of renderMenuButton;odd as isOdd; even as isEven;">
+        <button mat-menu-item (click)="btnClickedHandler(menu)" class="text-capitalize text-primary" [ngClass]="{ 'odd': isOdd, 'even': isEven }" style="font-size:0.8rem;">
+            <ng-container [ngSwitch]="menu">
+                <ng-container *ngSwitchCase="'add' || 'create'">
+                    <mat-icon class="text-primary">add_circle</mat-icon>
+                </ng-container>
+                <ng-container *ngSwitchCase="'update' || 'edit'">
+                    <mat-icon class="text-primary">drive_file_rename_outline</mat-icon>
+                </ng-container>
+                <ng-container *ngSwitchCase="'delete' || 'clear'">
+                    <mat-icon class="text-primary">delete</mat-icon>
+                </ng-container>
+                <span class="text-primary">{{menu}}</span>
+            </ng-container>
+        </button>
+    </ng-container>
+    <!-- <button mat-menu-item (click)="btnClickedHandler('add')">
+        <mat-icon>add_circle</mat-icon>Create
+    </button>
+    <button mat-menu-item (click)="btnClickedHandler('edit')">
+        <mat-icon>edit</mat-icon>Edit
+    </button>
+    <button mat-menu-item (click)="btnClickedHandler('delete')">
+        <mat-icon>delete</mat-icon>Delete
+    </button> -->
+</mat-menu>

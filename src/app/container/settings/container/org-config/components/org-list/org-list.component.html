@@ -1,0 +1,116 @@
+<mat-drawer-container class="example-container h-100" autoSize>
+    <mat-drawer class="sideForm" mode="side" #tenureConfigSideNav [opened]="actionState" [position]="'end'"
+        [disableClose]="true">
+        <div class="card mx-2 shadow bottom-rounded-borders top-rounded-borders">
+            <form [formGroup]="orgForm">
+                <div class="card-header bg-gradient text-white text-center  top-rounded-borders">Organization Form</div>
+                <div class="card-body" *ngIf="master">
+                    <label>OrgName</label>
+                    <input type="text" class="form-control" formControlName="orgName"
+                        [ngClass]="{ 'is-invalid': orgNamef?.touched && orgNamef?.invalid }">
+                    <small>
+                        <div *ngIf="orgNamef?.touched && orgNamef?.invalid" class="text-danger">
+                            <div *ngIf="orgNamef?.errors?.required">Organization Name is required</div>
+                        </div>
+                    </small>
+                </div>
+                <div class="card-body">
+                    <label>Username</label>
+                    <input type="text" class="form-control" formControlName="username"
+                        [ngClass]="{ 'is-invalid': usernamef?.touched && usernamef?.invalid }">
+                    <small>
+                        <div *ngIf="usernamef?.touched && usernamef?.invalid" class="text-danger">
+                            <div *ngIf="usernamef?.errors?.required">Username is required</div>
+                        </div>
+                    </small>
+                </div>
+                <div class="card-body">
+                    <label>Email</label>
+                    <input type="text" class="form-control" formControlName="email"
+                        [ngClass]="{ 'is-invalid': emailf?.touched && emailf?.invalid }">
+                    <small>
+                        <div *ngIf="emailf?.touched && emailf?.invalid" class="text-danger">
+                            <div *ngIf="emailf?.errors?.required">Email is required</div>
+                            <div *ngIf="emailf?.errors?.email">Email is invalid</div>
+                        </div>
+                    </small>
+                </div>
+                <div class="card-body">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password"
+                        [ngClass]="{ 'is-invalid': passwordf?.touched && passwordf?.invalid }">
+                    <small class="text-muted">Text must contain one number,one caps letter and #,$,&,@ letters</small>
+                    <small>
+                        <div *ngIf="passwordf?.touched && passwordf?.invalid" class="text-danger">
+                            <div *ngIf="passwordf?.errors?.required">Password is required</div>
+                            <div *ngIf="passwordf?.errors?.pattern">Password requirement mismatches</div>
+                        </div>
+                    </small>
+                </div>
+                <div class="card-body">
+                    <label>Confirm Passoword</label>
+                    <input type="text" class="form-control" formControlName="confirm_password"
+                        [ngClass]="{ 'is-invalid': confirm_passwordf?.touched && confirm_passwordf?.invalid  && orgForm?.errors?.matching}">
+                    <small>
+                        <div *ngIf="confirm_passwordf?.touched && confirm_passwordf?.invalid && orgForm?.errors?.matching"
+                            class="text-danger">
+                            <div *ngIf="confirm_passwordf?.errors?.required">Password is required</div>
+                            <div *ngIf="orgForm?.errors?.matching">Password and Confirm Password
+                                must match.</div>
+                        </div>
+                    </small>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div><button type="button" class="btn btn-outline-primary"
+                                (click)="closeSideNav()">Cancel</button>
+                        </div>
+                        <div><button type="button" class="btn btn-outline-primary" (click)="submit()">
+                                {{action === 'add' ? 'Add' : 'Update'}}
+                            </button></div>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="bg-gradient top-rounded-borders text-white text-center py-2 position-sticky top-0" style="z-index: 100;">
+            Organization Lists</div>
+        <ng-container *ngTemplateOutlet="orglist"></ng-container>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+
+
+<ng-template #orglist>
+    <ng-container *ngIf="!orgLists?.length">
+        <div class="card shadow-sm text-center border-0">
+            <div class="card-body fs-6">Need to add Organization Details to display</div>
+            <div class="card-body">
+                <button mat-raised-button class="bg-primary text-white" (click)="openSideNav()">
+                    <mat-icon>add_circle</mat-icon> Create Organization
+                </button>
+            </div>
+
+        </div>
+    </ng-container>
+    <ng-container *ngIf="orgLists.length">
+        <app-table [tableStyle]="{'height': 750 }" class="ag-theme-balham" [rowData]="orgLists"
+            [defaultColDef]="defaultColDefinition" [rowSelection]="rowSelection" [rowMultiSelectWithClick]="false"
+            (selectionChanged)="onSelectionChanged($event)" (gridReady)="onGridReady($event)"
+            [columnDefs]="columnDefs">
+
+        </app-table>
+        <!-- <ag-grid-angular [style.width.%]="100" [style.height.px]="500" [defaultColDef]="defaultColDefinition" [style.height.%]="100" class="ag-theme-alpine" [rowData]="orgLists"
+            [columnDefs]="columnDefs">
+        </ag-grid-angular> -->
+    </ng-container>
+</ng-template>
+<!-- 
+<ng-template #orgForm>
+
+  
+</ng-template> -->

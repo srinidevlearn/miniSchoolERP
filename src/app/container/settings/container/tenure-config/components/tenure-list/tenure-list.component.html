@@ -1,0 +1,109 @@
+<mat-drawer-container class="example-container h-100" autoSize>
+    <mat-drawer class="sideForm" mode="side" #tenureConfigSideNav [opened]="actionState" [position]="'end'"
+        [disableClose]="true">
+        <div class="card border-0 top-rounded-borders bottom-rounded-borders mx-2 shadow">
+
+            <form [formGroup]="tenureForm">
+                <div class="card-header top-rounded-borders bg-gradient text-white text-center">Tenure Form</div>
+                <div class="card-body">
+                    <label>Tenure</label>
+                    <select class="form-select" aria-label="Tenure Select" formControlName="tenurePeriod">
+                        <option value="select"></option>
+                        <option *ngFor="let item of tenures" value="{{item?.tenurePeriod}}"
+                            [selected]="item?.tenurePeriod === tenurePeriod">{{item?.tenurePeriod}}</option>
+                    </select>
+
+                </div>
+                <div class="card-body">
+                    <label>Start Date</label>
+                    <input type="text" mwlFlatpickr (change)="updateValue('effectiveStartDate',$event)"
+                        [convertModelValue]="true" class="form-control" [allowInput]="true" mask="0000-00-00"
+                        [value]="startDate | date: 'YYYY-MM-dd'" placeholder="YYYY-MM-DD">
+
+                </div>
+                <div class="card-body">
+                    <label>End Date</label>
+                    <input type="text" mwlFlatpickr (change)="updateValue('effectiveStartDate',$event)"
+                        class="form-control" mask="0000-00-00" placeholder="YYYY-MM-DD" [allowInput]="true"
+                        [value]="endDate | date: 'YYYY-MM-dd'" [convertModelValue]="true">
+
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div><button type="button" class="btn btn-outline-primary"
+                                (click)="closeSideNav()">Cancel</button>
+                        </div>
+                        <div><button type="button" class="btn btn-outline-primary" (click)="submit()">
+                                {{action === 'add' ? 'Add' : 'Update'}}
+                            </button></div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="bg-gradient top-rounded-borders text-white text-center py-2 position-sticky top-0" style="z-index: 100;">Tenure List
+        </div>
+
+        <ng-container *ngTemplateOutlet="tenureList"></ng-container>
+
+    </mat-drawer-content>
+</mat-drawer-container>
+
+
+<ng-template #tenureList>
+    <ng-container *ngIf="!tenures?.length">
+        <div class="card shadow-sm text-center border-0">
+            <div class="card-body fs-6">Need to add tenure configurations to display</div>
+            <div class="card-body">
+                <button mat-raised-button class="bg-primary text-white" (click)="openSideNav()">
+                    <mat-icon>add_circle</mat-icon> Create Tenure Configuration
+                </button>
+            </div>
+
+        </div>
+    </ng-container>
+
+    <ng-container *ngFor="let tenure of tenures">
+        <div class="card top-rounded-borders bottom-rounded-borders border-0 shadow-sm my-2 mx-3" mat-ripple>
+
+            <div class="card-body py-1">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        Tenure Period : {{tenure.tenurePeriod}}
+                    </div>
+                    <div>
+                        <button mat-icon-button type="button" [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" class="shadow-sm m-0" style="font-size: 0.75rem;">
+                            <button mat-menu-item (click)="openSideNav();createForm()">
+                                <mat-icon>add_circle</mat-icon>Create
+                            </button>
+                            <button mat-menu-item (click)="editSideNav(tenure)">
+                                <mat-icon>edit</mat-icon>Edit
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>delete</mat-icon>Delete
+                            </button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body py-1">
+
+                <span class="me-3">
+                    StartDate : <span class="badge bg-primary fs-61 mb-1 rounded-5">{{tenure.effectiveStartDate |
+                        date:'YYYY-MM-dd'}}</span>
+                </span>
+                <span class="ms-3">
+
+                    EndDate : <span class="badge bg-primary fs-61 mb-1 rounded-5">{{tenure.effectiveEndDate |
+                        date:'YYYY-MM-dd'}}</span>
+                </span>
+            </div>
+        </div>
+
+    </ng-container>
+</ng-template>

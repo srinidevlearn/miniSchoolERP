@@ -1,0 +1,87 @@
+
+$layout-bg: linear-gradient(to right, rgb(196, 181, 253), rgb(167, 139, 250));;
+// $layout-bg: #6a0080;
+$layout-font-color: #673ab7;
+$circular-radius: 50%;
+
+
+mat-toolbar {
+  background: $layout-bg;
+  color: $layout-font-color;
+  height: 3.5rem;
+  border:none;
+  flex-direction: row;
+  justify-content: space-between;
+  width:99% !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  font-family: 'Poppins', sans-serif !important;
+
+
+}
+.avatar {
+  height: 25px; 
+  width: 25px;
+  border-radius: $circular-radius;
+  &Text{
+    text-align: center;
+    font-size: 1.2rem;
+    border-radius: $circular-radius;
+  }
+}
+
+
+mat-sidenav {
+  margin: 0.25rem;
+  margin-top: 0.5rem;
+  width: 9rem;
+  border-right: none;
+  background: $layout-bg;
+  color: $layout-font-color;
+  border-radius: 10px;
+  border:none;
+  margin-left: 0.5rem;
+ 
+}
+
+
+mat-sidenav-content {
+
+  margin: 0.25rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  height: calc(100vh - 4rem);
+  border-radius: 10px;
+  margin-left: 2rem;
+  font-family: 'Poppins', sans-serif !important;
+
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 4rem);
+}
+
+
+
+mat-toolbar {
+   border-bottom-left-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
+
+}
+
+
+::ng-deep .mat-toolbar-row,
+.mat-toolbar-single-row {
+  // justify-content: space-between;
+}
+
+// @media only screen and (max-width: 600px) {
+//   ::ng-deep .mat-toolbar-row,
+//   .mat-toolbar-single-row {
+//     // justify-content: flex-end;
+//   }
+//   .content {
+//     margin: 0rem;
+//     height: calc(100vh - 0rem);
+//   }
+// }

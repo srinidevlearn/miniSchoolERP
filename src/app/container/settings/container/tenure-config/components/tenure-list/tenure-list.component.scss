@@ -1,0 +1,14 @@
+:host::ng-deep mat-menu.mat-menu-content{
+    padding:0 !important
+}
+
+mat-drawer{
+    width: 30rem;
+}
+:host::ng-deep [mwlflatpickr]{
+    // border: none !important;
+    // width: 100% !important;
+    // padding: 0;
+    // margin: 0;
+    // outline: none !important;
+}
