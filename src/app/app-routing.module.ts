@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./container/container.module').then((m)=>m.ContainerModule),
     runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
   },
-  // {path:'',redirectTo:`/${RouterString.AUTH}`,pathMatch:"full"}
+  {path:'',redirectTo:`container`,pathMatch:"full"}
 ];
 
 @NgModule({
