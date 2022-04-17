@@ -13,7 +13,7 @@ import { ActionBtnComponent } from 'src/app/shared/components/action-btn/action-
 import { AutoUnSubscribeService } from 'src/app/shared/services/auto-unsubscribe/auto-un-subscribe.service';
 import { action } from 'src/app/utility/custom-types';
 import { defaultColDefinition } from 'src/app/utility/utility';
-import { OrgApiService } from '../../services/org-api.service';
+import { OrgApiService } from '../../services/user-api.service';
 export default class Validation {
   static match(controlName: string, checkControlName: string): ValidatorFn {
     return (controls: AbstractControl) => {
@@ -38,46 +38,46 @@ export default class Validation {
 }
 
 @Component({
-  selector: 'app-org-list',
-  templateUrl: './org-list.component.html',
-  styleUrls: ['./org-list.component.scss'],
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss'],
   providers: [AutoUnSubscribeService],
 })
-export class OrgListComponent implements OnInit {
+export class UserListComponent implements OnInit {
   action!: action;
   actionState: boolean = false;
   loading: boolean = false;
   orgLists: any[] = [];
   master: boolean = false;
 
-  orgForm: FormGroup;
+  userForm: FormGroup;
   gridApi: any;
   gridColumnApi: any;
   selectedNodes: any;
   rowSelection = 'single';
   get usernamef() {
-    return this.orgForm.get('username');
+    return this.userForm.get('username');
   }
   get emailf() {
-    return this.orgForm.get('email');
+    return this.userForm.get('email');
   }
   get passwordf() {
-    return this.orgForm.get('password');
+    return this.userForm.get('password');
   }
   get orgNamef() {
-    return this.orgForm.get('orgName');
+    return this.userForm.get('orgName');
   }
   get confirm_passwordf() {
-    if (this.orgForm.get('confirm_password'))
-      return this.orgForm.get('confirm_password');
+    if (this.userForm.get('confirm_password'))
+      return this.userForm.get('confirm_password');
     return;
   }
   get f() {
-    return this.orgForm.controls;
+    return this.userForm.controls;
   }
 
   columnDefs: ColDef[] = [
-    { field: 'orgName' },
+
     { field: 'username' },
     { field: 'email' },
     { field: 'password' },
@@ -115,7 +115,7 @@ export class OrgListComponent implements OnInit {
     private api: OrgApiService,
     private destroy$: AutoUnSubscribeService
   ) {
-    this.orgForm = fb.group(
+    this.userForm = fb.group(
       {
         username: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
@@ -139,14 +139,14 @@ export class OrgListComponent implements OnInit {
     this.actionState = false;
   }
   submit() {
-    console.log(this.orgForm.value);
+    console.log(this.userForm.value);
   }
   openSideNav() {
     this.actionState = true;
   }
 
   addForm() {
-    this.orgForm.reset();
+    this.userForm.reset();
   }
 
   editSideNav(data: any) {
@@ -155,10 +155,10 @@ export class OrgListComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.master) {
-      this.orgForm.addControl(
-        'orgName',
-        new FormControl('', Validators.required)
-      );
+      // this.userForm.addControl(
+      //   'orgName',
+      //   new FormControl('', Validators.required)
+      // );
     }
     this.api
       .getOrgLists()
@@ -181,6 +181,6 @@ export class OrgListComponent implements OnInit {
   }
 
   loadFormsDataWithValues(data: any) {
-    this.orgForm.patchValue({ ...data });
+    this.userForm.patchValue({ ...data });
   }
 }

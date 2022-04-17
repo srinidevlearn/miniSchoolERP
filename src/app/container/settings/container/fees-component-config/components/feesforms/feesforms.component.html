@@ -1,0 +1,49 @@
+<div class="card border-0 top-rounded-borders bottom-rounded-borders">
+    <div class="card-header top-rounded-borders bg-gradient text-white text-center position-sticky top-0">Fees Component Form</div>
+    <form [formGroup]="feesFormGroup">
+
+        <div class="card-body">
+            <select class="form-select" formControlName="tenure">
+                <option value="">Select</option>
+                <option *ngFor="let tenure of tenures" [value]>{{tenure}}</option>
+            </select>
+        </div>
+        <div class="card-body">
+            <label>Term1</label>
+            <input type="number" class="form-control" formControlName="term1">
+        </div>
+        <div class="card-body">
+            <label>Term2</label>
+
+            <input type="number" class="form-control" formControlName="term2">
+        </div>
+        <div class="card-body">
+            <label>Term3</label>
+
+            <input type="number" class="form-control" formControlName="term3">
+        </div>
+        <div class="card-body">
+            <label>Books</label>
+            <input type="number" class="form-control" formControlName="books">
+        </div>
+        <div class="card-body">
+            <label>Uniforms</label>
+            <input type="number" class="form-control" formControlName="uniforms">
+        </div>
+        <div class="card-body">
+            <label>Shoes</label>
+            <input type="number" class="form-control" formControlName="shoes">
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <div><button type="button" class="btn btn-outline-primary" (click)="cancel()">Cancel</button>
+                </div>
+                <div><button type="button" class="btn btn-outline-primary" (click)="submit()">
+                        {{action === 'add' ? 'Add' : 'Update'}}
+                    </button></div>
+
+            </div>
+        </div>
+    </form>
+
+</div>

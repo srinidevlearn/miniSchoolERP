@@ -6,8 +6,10 @@ import { RootSettingsComponent } from './settings.component';
 import { TenureConfigModule } from './container/tenure-config/tenure-config.module';
 import { RoleConfigModule } from './container/role-config/role-config.module';
 import { FeesComponentConfigModule } from './container/fees-component-config/fees-component-config.module';
-import { OrgConfigModule } from './container/org-config/org-config.module';
+import { UserConfigModule } from './container/user-config/user-config.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { OrgConfigModule } from './container/org-config/org-config.module';
+import { ClassBasedFeesConfigModule } from './container/class-based-fees-config/class-based-fees-config.module';
 
 @NgModule({
   declarations: [RootSettingsComponent],
@@ -19,7 +21,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     TenureConfigModule,
     RoleConfigModule,
     FeesComponentConfigModule,
-    OrgConfigModule,
+    UserConfigModule,
+    ClassBasedFeesConfigModule,
+    OrgConfigModule
   ]
 })
 export class SettingsModule { }

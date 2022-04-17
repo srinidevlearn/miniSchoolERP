@@ -6,12 +6,9 @@ import { catchError, of, retry } from 'rxjs';
   providedIn: 'root'
 })
 export class OrgApiService {
-  private apiUrl = 'api/orgConfig';
-  constructor(private http:HttpClient) { 
-    
-  }
-
-  getOrgLists(){
-    return this.http.get(this.apiUrl).pipe(retry(1),catchError((e:any)=>of([])))
+  private apiUrl:string = 'api/organizationConfig'
+  constructor(private http:HttpClient) { }
+  getOrganizationConfig(){
+    return this.http.get(this.apiUrl).pipe(retry(2),catchError((e)=>of([])))
   }
 }

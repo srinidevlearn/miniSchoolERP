@@ -1,1 +1,1 @@
-export type action = 'add' | 'update';
+export type action = 'add' | 'update' | 'delete';

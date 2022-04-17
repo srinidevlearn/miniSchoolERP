@@ -2,20 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { OrgConfigRoutingModule } from './org-config-routing.module';
-import { OrgListComponent } from './components/org-list/org-list.component';
-import { OrgConfigComponent } from './components/org-config/org-config.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
+import { OrgConfigComponent } from './components/org-config/org-config.component';
+import { OrgConfigformComponent } from './components/org-configform/org-configform.component';
+import { OrgConfigDetailsComponent } from './components/org-config-details/org-config-details.component';
 
 @NgModule({
-  declarations: [OrgListComponent, OrgConfigComponent],
+  declarations: [
+    OrgConfigComponent,
+    OrgConfigformComponent,
+    OrgConfigDetailsComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule,
     SharedModule,
+    ReactiveFormsModule,
     OrgConfigRoutingModule,
   ],
 })

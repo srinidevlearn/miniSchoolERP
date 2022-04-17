@@ -40,7 +40,7 @@ a.menu-button {
     color: #9558ff !important;
     // color : #607d8b !important;
     & div[mat-button] {
-      width: 90%;
+      width: 95%;
       // background: linear-gradient(
       //   to right,
       //   rgb(243, 244, 246),
@@ -52,8 +52,8 @@ a.menu-button {
         rgb(235, 202, 254),
         rgb(250, 195, 254)
       );
-
-      clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%); //right
+      // clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 10% 50%, 0% 0%); //chevron right
+     clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%); //right
       // clip-path:polygon(10% 0%, 100% 1%, 100% 100%, 10% 100%, 0% 50%); //left
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       animation-name: activeAnim;
@@ -101,9 +101,18 @@ a.menu-button {
   border-bottom-right-radius: 0.625rem !important;
 }
 mat-drawer.sideForm {
+  &.mat-drawer-side.mat-drawer-end{
+    border-left:none !important
+  }
   width: 25rem !important;
-  height: auto;
+  height: calc(100vh - 5.5rem);
   overflow-y: auto;
+  padding-left: 0.5rem;
+  border: none;
+  & .card{
+    background: rgb(245 240 255)
+  }
+
 }
 ::-webkit-scrollbar {
   height: 0.5rem !important;

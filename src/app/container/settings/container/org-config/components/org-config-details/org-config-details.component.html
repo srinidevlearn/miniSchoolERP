@@ -1,0 +1,34 @@
+<mat-drawer-container class="example-container h-100">
+    <mat-drawer class="sideForm" mode="side" #orgConfigComponentSideNav [opened]="actionState" [position]="'end'"
+        [disableClose]="true">
+        <app-org-config-form [action]="action" [orgConfigData]="orgConfigurationData" (formAction)="captureFormAction($event)"></app-org-config-form>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="bg-gradient top-rounded-borders text-white text-center py-2 position-sticky top-0"
+            style="z-index: 100;">Organization Config List
+        </div>
+        <ng-container *ngTemplateOutlet="orgConfigLists"></ng-container>
+    </mat-drawer-content>
+</mat-drawer-container>
+<ng-template #orgConfigLists>
+    <ng-container *ngIf="!orgConfigurationData?.length">
+        <div class="card shadow-sm text-center border-0">
+            <div class="card-body fs-6">Need to add Organization Details to display</div>
+            <div class="card-body">
+                <button mat-raised-button class="bg-primary text-white" (click)="openSideNav()">
+                    <mat-icon>add_circle</mat-icon> Create Organizations
+                </button>
+            </div>
+
+        </div>
+    </ng-container>
+    <ng-container *ngIf="orgConfigurationData.length">
+        <app-table [tableStyle]="{'height': 750 }" class="ag-theme-balham" [rowData]="orgConfigurationData"
+            [defaultColDef]="defaultColDefinition" [rowSelection]="'single'" [rowMultiSelectWithClick]="false"
+            (selectionChanged)="onSelectionChanged($event)" (gridReady)="onGridReady($event)"
+            [columnDefs]="columnDefs">
+
+        </app-table>
+    
+    </ng-container>
+</ng-template>

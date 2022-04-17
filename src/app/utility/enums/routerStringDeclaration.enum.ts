@@ -14,6 +14,9 @@ export const enum RouterString{
    FORGETPASSWORD = 'forgetpassword',
    TENURECONFIG='tenureConfig',
    ORGCONFIG = 'orgConfig',
+   USERCONFIG = 'userConfig',
+   CONTAINER = 'pages',
+   CLASSCONFIG = 'classConfig',
    ROLECONFIG = 'roleConfig',
    FEESCOMPONENTCONFIG ='feesComponentsConfig'
 }

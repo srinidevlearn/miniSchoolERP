@@ -1,0 +1,42 @@
+<div class="card border top-rounded-borders bottom-rounded-borders">
+    <div class="card-header top-rounded-borders bg-gradient text-white text-center position-sticky top-0">Organization
+        Form</div>
+    <form [formGroup]="orgForm">
+        <div class="card-body">
+            <div class="card-body">
+                <label>Organization Name : </label>
+                <input class="form-control" formControlName="name">
+            </div>
+            <div class="card-body">
+                <label>Organization Address : </label>
+                <input class="form-control" formControlName="address">
+            </div>
+            <div class="card-body">
+                <label>Organization City : </label>
+                <input class="form-control" formControlName="city">
+            </div>
+            <div class="card-body">
+                <label>Organization State : </label>
+                <input class="form-control" formControlName="state">
+            </div>
+            <div class="card-body">
+                <label>Organization Country : </label>
+                <input class="form-control" formControlName="country">
+            </div>
+            <div class="card-body">
+                <label>Organization Pincode : </label>
+                <input class="form-control" formControlName="pincode">
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div><button type="button" class="btn btn-outline-primary" (click)="cancel()">Cancel</button>
+                    </div>
+                    <div><button type="button" class="btn btn-outline-primary" (click)="submit()">
+                            {{action === 'add' ? 'Add' : 'Update'}}
+                        </button></div>
+    
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { action } from 'src/app/utility/custom-types';
 
 @Component({
   selector: 'app-org-config',
@@ -7,9 +6,6 @@ import { action } from 'src/app/utility/custom-types';
   styleUrls: ['./org-config.component.scss']
 })
 export class OrgConfigComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
   }
 

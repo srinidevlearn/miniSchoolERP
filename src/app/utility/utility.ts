@@ -8,7 +8,7 @@ export const RootMenu: IToolBarMenu[] = [
     showOnMobile: false,
     showOnTablet: false,
     showOnDesktop: false,
-    url: `/${RouterString.DASHBOARD}`,
+    url: `${RouterString.DASHBOARD}`,
   },
   {
     label: 'Students',
@@ -16,7 +16,7 @@ export const RootMenu: IToolBarMenu[] = [
     showOnMobile: false,
     showOnTablet: false,
     showOnDesktop: false,
-    url: `/${RouterString.STUDENTS}`,
+    url: `${RouterString.STUDENTS}`,
   },
   {
     label: 'Fees',
@@ -24,7 +24,7 @@ export const RootMenu: IToolBarMenu[] = [
     showOnMobile: false,
     showOnTablet: false,
     showOnDesktop: false,
-    url: `/${RouterString.FEES}`,
+    url: `${RouterString.FEES}`,
   },
   {
     label: 'Parents',
@@ -32,7 +32,7 @@ export const RootMenu: IToolBarMenu[] = [
     showOnMobile: false,
     showOnTablet: false,
     showOnDesktop: false,
-    url: `/${RouterString.PARENTS}`,
+    url: `${RouterString.PARENTS}`,
   },
   {
     label: 'Siblings',
@@ -40,7 +40,7 @@ export const RootMenu: IToolBarMenu[] = [
     showOnMobile: false,
     showOnTablet: false,
     showOnDesktop: false,
-    url: `/${RouterString.SIBILINGS}`,
+    url: `${RouterString.SIBILINGS}`,
   },
   {
     label: 'Bus Route',
@@ -48,7 +48,7 @@ export const RootMenu: IToolBarMenu[] = [
     showOnMobile: false,
     showOnTablet: false,
     showOnDesktop: false,
-    url: `/${RouterString.BUSROUTE}`,
+    url: `${RouterString.BUSROUTE}`,
   },
   {
     label: 'Address',
@@ -56,7 +56,7 @@ export const RootMenu: IToolBarMenu[] = [
     showOnMobile: false,
     showOnTablet: false,
     showOnDesktop: false,
-    url: `/${RouterString.ADDRESS}`,
+    url: `${RouterString.ADDRESS}`,
   },
   {
     label: 'Settings',
@@ -64,16 +64,16 @@ export const RootMenu: IToolBarMenu[] = [
     showOnMobile: false,
     showOnTablet: false,
     showOnDesktop: false,
-    url: `/${RouterString.SETTINGS}`,
+    url: `${RouterString.SETTINGS}`,
   },
-  {
-    label: 'Logout',
-    icon: 'logout',
-    showOnMobile: false,
-    showOnTablet: false,
-    showOnDesktop: false,
-    url: `/${RouterString.LOGOUT}`,
-  },
+  // {
+  //   label: 'Logout',
+  //   icon: 'logout',
+  //   showOnMobile: false,
+  //   showOnTablet: false,
+  //   showOnDesktop: false,
+  //   url: `/${RouterString.LOGOUT}`,
+  // },
 ];
 export const dateHelper = (timeStamp: number) =>
   new Date(timeStamp).toISOString().split('T')[0];

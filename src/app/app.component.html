@@ -1,1 +1,6 @@
+<ng-container *ngIf="routerEvents$|async">  
+    <div class="position-relative">
+        <app-loading *ngIf="loadingNavProgress" class="position-absolute top-50 start-50"></app-loading>
+    </div>
+</ng-container>
 <router-outlet></router-outlet>

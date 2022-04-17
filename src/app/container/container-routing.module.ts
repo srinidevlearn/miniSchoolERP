@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RouterString } from '../utility/enums/routerStringDeclaration.enum';
 import { RootContainerComponents } from './container.component';
 
 const routes: Routes = [
@@ -8,42 +9,42 @@ const routes: Routes = [
     component: RootContainerComponents,
     children: [
       {
-        path: 'dashboard',
+        path: RouterString.DASHBOARD,
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
-        path: 'students',
+        path: RouterString.STUDENTS,
         loadChildren: () =>
           import('./students/students.module').then((m) => m.StudentsModule),
       },
       {
-        path: 'fees',
+        path: RouterString.FEES,
         loadChildren: () =>
           import('./fees/fees.module').then((m) => m.FeesModule),
       },
       {
-        path: 'parents',
+        path: RouterString.PARENTS,
         loadChildren: () =>
           import('./parents/parents.module').then((m) => m.ParentsModule),
       },
       {
-        path: 'siblings',
+        path: RouterString.SIBILINGS,
         loadChildren: () =>
           import('./siblings/siblings.module').then((m) => m.SiblingsModule),
       },
       {
-        path: 'settings',
+        path: RouterString.SETTINGS,
         loadChildren: () =>
           import('./settings/settings.module').then((m) => m.SettingsModule),
       },
       {
-        path: 'address',
+        path: RouterString.ADDRESS,
         loadChildren: () =>
           import('./address/address.module').then((m) => m.AddressModule),
       },
       {
-        path: 'busRoute',
+        path: RouterString.BUSROUTE,
         loadChildren: () =>
           import('./bus-route/bus-route.module').then((m) => m.BusRouteModule),
       },

@@ -2,15 +2,15 @@
     <mat-drawer class="sideForm" mode="side" #tenureConfigSideNav [opened]="actionState" [position]="'end'"
         [disableClose]="true">
         <div class="card mx-2 shadow bottom-rounded-borders top-rounded-borders">
-            <form [formGroup]="orgForm">
-                <div class="card-header bg-gradient text-white text-center  top-rounded-borders">Organization Form</div>
+            <form [formGroup]="userForm">
+                <div class="card-header bg-gradient text-white text-center  top-rounded-borders">User Configuration Form</div>
                 <div class="card-body" *ngIf="master">
                     <label>OrgName</label>
                     <input type="text" class="form-control" formControlName="orgName"
                         [ngClass]="{ 'is-invalid': orgNamef?.touched && orgNamef?.invalid }">
                     <small>
                         <div *ngIf="orgNamef?.touched && orgNamef?.invalid" class="text-danger">
-                            <div *ngIf="orgNamef?.errors?.required">Organization Name is required</div>
+                            <div *ngIf="orgNamef?.errors?.required">User Configuration is required</div>
                         </div>
                     </small>
                 </div>
@@ -50,12 +50,12 @@
                 <div class="card-body">
                     <label>Confirm Passoword</label>
                     <input type="text" class="form-control" formControlName="confirm_password"
-                        [ngClass]="{ 'is-invalid': confirm_passwordf?.touched && confirm_passwordf?.invalid  && orgForm?.errors?.matching}">
+                        [ngClass]="{ 'is-invalid': confirm_passwordf?.touched && confirm_passwordf?.invalid  && userForm?.errors?.matching}">
                     <small>
-                        <div *ngIf="confirm_passwordf?.touched && confirm_passwordf?.invalid && orgForm?.errors?.matching"
+                        <div *ngIf="confirm_passwordf?.touched && confirm_passwordf?.invalid && userForm?.errors?.matching"
                             class="text-danger">
                             <div *ngIf="confirm_passwordf?.errors?.required">Password is required</div>
-                            <div *ngIf="orgForm?.errors?.matching">Password and Confirm Password
+                            <div *ngIf="userForm?.errors?.matching">Password and Confirm Password
                                 must match.</div>
                         </div>
                     </small>
@@ -78,7 +78,7 @@
     </mat-drawer>
     <mat-drawer-content>
         <div class="bg-gradient top-rounded-borders text-white text-center py-2 position-sticky top-0" style="z-index: 100;">
-            Organization Lists</div>
+            User Configured Lists</div>
         <ng-container *ngTemplateOutlet="orglist"></ng-container>
     </mat-drawer-content>
 </mat-drawer-container>
@@ -88,10 +88,10 @@
 <ng-template #orglist>
     <ng-container *ngIf="!orgLists?.length">
         <div class="card shadow-sm text-center border-0">
-            <div class="card-body fs-6">Need to add Organization Details to display</div>
+            <div class="card-body fs-6">Need to add User Details to display</div>
             <div class="card-body">
                 <button mat-raised-button class="bg-primary text-white" (click)="openSideNav()">
-                    <mat-icon>add_circle</mat-icon> Create Organization
+                    <mat-icon>add_circle</mat-icon> Create User
                 </button>
             </div>
 
@@ -110,7 +110,7 @@
     </ng-container>
 </ng-template>
 <!-- 
-<ng-template #orgForm>
+<ng-template #userForm>
 
   
 </ng-template> -->

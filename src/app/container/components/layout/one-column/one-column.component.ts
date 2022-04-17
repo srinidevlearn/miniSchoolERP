@@ -5,6 +5,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { AutoUnSubscribeService } from 'src/app/shared/services/auto-unsubscribe/auto-un-subscribe.service';
 import { RootMenu } from 'src/app/utility/utility';
+import { RouterString } from 'src/app/utility/enums/routerStringDeclaration.enum';
 
 @Component({
   selector: 'app-one-column-layout',
@@ -42,7 +43,7 @@ export class OneColumnComponent {
   ) {
     this.menuIems = this.menuIems.map(i=>{
       let temp = {...i};
-      temp.modifiedURL = `/container${i.url}`;
+      temp.modifiedURL = `/${RouterString.CONTAINER}/${i.url}`;
       return temp;
     })
     router.events.pipe(tap((e:any)=>this.navigationInterceptor(e)),takeUntil(destroy$)).subscribe(d=>{

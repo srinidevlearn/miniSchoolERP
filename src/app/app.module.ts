@@ -10,10 +10,12 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './mock.data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
+import { LoadingComponent } from './container/components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

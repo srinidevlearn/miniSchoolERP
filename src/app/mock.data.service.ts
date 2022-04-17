@@ -9,10 +9,41 @@ export class DataService implements InMemoryDbService {
     return {
       products,
       tenureConfig,
-      orgConfig
+      orgConfig,
+      feesComponentConfig,
+      organizationConfig
     };
   }
 }
+export const organizationConfig = Array(1000)
+.fill(0)
+.map(i=>{
+  let  orgFormModel: any = {
+    name: 'test org',
+    category: 'school',
+    address: 'test',
+    city: 'Chennai',
+    state: 'TN',
+    country: 'IN',
+    pincode: '600119',
+  };
+  return orgFormModel;
+})
+export const feesComponentConfig = Array(1000)
+  .fill(0)
+  .map((itm, ind) => {
+    let tenureNum = 2020 + ind;
+    let temp = {
+      tenurePeriod: `${tenureNum}-${tenureNum + 1}`,
+      term1: 20000,
+      term2: 10000,
+      term3: 5000,
+      books: 2500,
+      uniform: 1000,
+      shoes: 500,
+    };
+    return temp;
+  });
 
 export const tenureConfig = Array(10)
   .fill(0)
@@ -31,14 +62,22 @@ export const tenureConfig = Array(10)
     return temp;
   });
 
+export const tenure = Array(10)
+  .fill(0)
+  .map((itm, ind) => {
+    let tenureNum = 2020 + ind;
+    console.log(tenureNum)
+    return `${tenureNum}-${tenureNum + 1}`;
+  });
+
 export const orgConfig = Array(1000)
   .fill(0)
   .map((itm, ind) => {
     let temp = {
-     orgName:'Orgname' +ind+1,
-     username:'abc',
-     email:'abc@gmail.com',
-     password:'abc@gmail.com',
+      orgName: 'Orgname' + ind + 1,
+      username: 'abc',
+      email: 'abc@gmail.com',
+      password: 'abc@gmail.com',
     };
     return temp;
   });
