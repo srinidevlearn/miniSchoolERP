@@ -14,6 +14,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgxMaskModule } from 'ngx-mask';
+import {MatStepperModule} from '@angular/material/stepper';
+
 const MAT_MODS:any = [
   LayoutModule,
   MatToolbarModule,
@@ -23,6 +25,7 @@ const MAT_MODS:any = [
   MatListModule,
   MatTooltipModule,
   MatMenuModule,
+  MatStepperModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatFormFieldModule,

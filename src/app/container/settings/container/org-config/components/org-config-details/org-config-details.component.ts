@@ -42,7 +42,7 @@ export class OrgConfigDetailsComponent implements OnInit {
   closeSideNav() {
     this.actionState = false;
   }
-
+  keysToHideOnMobileDevice:string[] = ['name','address'];
   columnDefs: ColDef[] = [
     { field: 'name'},
     { field: 'address' },

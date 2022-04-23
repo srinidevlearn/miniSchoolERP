@@ -30,7 +30,7 @@
      
     }
     font-family: "Poppins", sans-serif !important;
-    height: calc(100vh - 7.5rem) !important;
+    height: calc(100vh - 8.5rem) !important;
   }
   :host ::ng-deep .ag-body-horizontal-scroll-viewport {
     overflow-x: scroll;
@@ -65,8 +65,9 @@
   }
   
   ::ng-deep .ag-theme-balham .ag-header {
-    background-color: #6e59c2;
-    background-color: #6e59c2;
+    background-color: rgb(110, 89, 194);
+    // background-color: #6e59c2;4
+    
     border-bottom: 1px solid;
     border-bottom-color: #edecfc;
     border-bottom-color: #edecfc;
@@ -77,18 +78,18 @@
   
   :host ::ng-deep .ag-row-even {
     font-size: 13px;
-    line-height: 2.2rem;
+    // line-height: 2.2rem;
   }
   
   :host ::ng-deep .ag-theme-balham .ag-ltr .ag-cell {
-    border-right: 1px solid #d3d1ef;
+    // border-right: 1px solid #d3d1ef;
   }
   
   ::ng-deep .ag-theme-balham .ag-row-odd {
     background-color: #eeeefb;
     background-color: #eeeefb;
     font-size: 13px;
-    line-height: 2.2rem;
+    // line-height: 2.2rem;
     font-weight: 400;
   }
   
@@ -109,7 +110,15 @@
     );
     height: 36px;
   }
-  
+  ::ng-deep .ag-theme-balham .ag-row{
+    border: none !important;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    height: 36px;
+    vertical-align: middle;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    // box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+  }
   ::ng-deep .ag-theme-balham .ag-header-cell:after,
   ::ng-deep .ag-theme-balham .ag-header-group-cell:after {
     content: "";
@@ -137,6 +146,11 @@
   }
   
   :host ::ng-deep input[ref="eInput"] {
-    color: #6e59c2 !important;
+    color: rgb(110, 89, 194) !important;
   }
   
+
+  :host ::ng-deep .ag-theme-balham .ag-popup{
+    height: unset !important;
+    background: rgba(110,89,194,0.5);
+  }

@@ -1,0 +1,22 @@
+<div class="card  border-0 my-2">
+  <div class="card-header bg-transaprent position-sticky top-0 py-2 pt-4" style="z-index: 999;top: -0.5rem !important; border-top-left-radius: 2rem;border-top-right-radius: 2rem;">
+    <div class="d-flex justify-content-between">
+      <div>header</div>
+      <div class="pointer" (click)="openLink($event)">
+        <mat-icon>close</mat-icon>
+      </div>
+
+    </div>
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between" *ngFor="let item of renderingData | keyvalue">
+      <div class="w-25 text-capitalize"><strong>{{item.key}} :</strong></div>
+      <div class="w-75">{{item.value}}</div>      
+
+      </li>
+
+    </ul>
+  
+  </div>
+</div>

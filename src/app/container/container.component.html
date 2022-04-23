@@ -1,4 +1,4 @@
-<app-one-column-layout [avatarText]="'S'">
+<app-one-column-layout [avatarText]="avatarText | slice:0:2">
     <div class="router-outlet">
         <router-outlet></router-outlet>        
     </div>

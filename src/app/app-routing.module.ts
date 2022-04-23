@@ -14,7 +14,7 @@ const routes: Routes = [
       import('./container/container.module').then((m) => m.ContainerModule),
     runGuardsAndResolvers: 'pathParamsOrQueryParamsChange',
   },
-  { path: '', redirectTo: RouterString.CONTAINER, pathMatch: 'full' },
+  { path: '', redirectTo: RouterString.AUTH, pathMatch: 'full' },
 ];
 
 @NgModule({

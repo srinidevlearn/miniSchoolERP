@@ -11,7 +11,7 @@
 
     <ng-container>
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <div class="avatarText bg-light text-primary" *ngIf="!profilePhotoURL && avatarText">{{avatarText}}</div>
+        <div class="avatarText bg-light text-primary text-uppercase" *ngIf="!profilePhotoURL && avatarText">{{avatarText}}</div>
         <img class="avatar mat-elevation-z8" height="30" width="30" *ngIf="profilePhotoURL" [src]="profilePhotoURL" />
       </button>
     </ng-container>
@@ -81,7 +81,7 @@
     <mat-icon>person</mat-icon>
     <span>Profile</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="logout()">
     <mat-icon>logout</mat-icon>
     <span>Logout</span>
   </button>

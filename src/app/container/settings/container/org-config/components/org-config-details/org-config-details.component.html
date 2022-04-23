@@ -1,7 +1,8 @@
 <mat-drawer-container class="example-container h-100">
     <mat-drawer class="sideForm" mode="side" #orgConfigComponentSideNav [opened]="actionState" [position]="'end'"
         [disableClose]="true">
-        <app-org-config-form [action]="action" [orgConfigData]="orgConfigurationData" (formAction)="captureFormAction($event)"></app-org-config-form>
+        <app-org-config-form [action]="action" [orgConfigData]="orgConfigurationData"
+            (formAction)="captureFormAction($event)"></app-org-config-form>
     </mat-drawer>
     <mat-drawer-content>
         <div class="bg-gradient top-rounded-borders text-white text-center py-2 position-sticky top-0"
@@ -26,9 +27,9 @@
         <app-table [tableStyle]="{'height': 750 }" class="ag-theme-balham" [rowData]="orgConfigurationData"
             [defaultColDef]="defaultColDefinition" [rowSelection]="'single'" [rowMultiSelectWithClick]="false"
             (selectionChanged)="onSelectionChanged($event)" (gridReady)="onGridReady($event)"
-            [columnDefs]="columnDefs">
+            [columnsToHideOnMobileDevice]="keysToHideOnMobileDevice" [columnDefs]="columnDefs">
 
         </app-table>
-    
+
     </ng-container>
 </ng-template>

@@ -9,8 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './mock.data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AgGridModule } from 'ag-grid-angular';
 import { LoadingComponent } from './container/components/loading/loading.component';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,9 @@ import { LoadingComponent } from './container/components/loading/loading.compone
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientInMemoryWebApiModule.forRoot(DataService),
-    AgGridModule.withComponents([]),
+    // HttpClientInMemoryWebApiModule.forRoot(DataService),
     BrowserAnimationsModule,
+    HotToastModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

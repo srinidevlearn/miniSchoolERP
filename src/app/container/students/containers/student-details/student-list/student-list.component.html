@@ -1,0 +1,39 @@
+<mat-drawer-container class="example-container h-100">
+    <mat-drawer class="sideForm" mode="side" #StudentListComponent [opened]="actionState" [position]="'end'"
+        [disableClose]="true">
+        <app-student-detail-form (formAction)="captureFormAction($event)"></app-student-detail-form>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="bg-gradient top-rounded-borders text-white text-center py-2 px-2 position-sticky top-0 d-flex justify-content-between my-auto"
+            style="z-index: 100">
+            <div class="my-auto">Student Details</div>
+            <div class="d-flex">
+                <div><button type="button" class="btn btn-sm text-white" [disabled]="gridApi"
+                        (click)="addFilters()">{{toggleFilters ? 'Remove' : 'Add'}} Floating Filters</button></div>
+                <div><button type="button" class="btn btn-sm text-white" [disabled]="gridApi">Export As CSV</button>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngTemplateOutlet="studentLists"></ng-container>
+    </mat-drawer-content>
+</mat-drawer-container>
+<ng-template #studentLists>
+    <ng-container *ngIf="!studentsLists?.length">
+        <div class="card shadow-sm text-center border-0">
+            <div class="card-body fs-6">
+                Need to add student details to display
+            </div>
+            <div class="card-body">
+                <button mat-raised-button class="bg-primary text-white" (click)="openSideNav()">
+                    <mat-icon>add_circle</mat-icon> Create Student Details
+                </button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="studentsLists.length">
+        <app-table [tableStyle]="{ height: 580 }" class="ag-theme-balham" [rowData]="studentsLists"
+            [defaultColDef]="defaultColDefinition" [rowSelection]="'single'" [rowMultiSelectWithClick]="false"
+            (selectionChanged)="onSelectionChanged($event)" (gridReady)="onGridReady($event)" [columnDefs]="columnDefs">
+        </app-table>
+    </ng-container>
+</ng-template>

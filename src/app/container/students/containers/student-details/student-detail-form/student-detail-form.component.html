@@ -1,0 +1,273 @@
+<div class="card border-0 top-rounded-borders bottom-rounded-borders">
+    <div class="card-header top-rounded-borders bg-gradient text-white text-center position-sticky top-0 d-flex justify-content-between">
+        <div class="my-auto">Student Form</div>
+        <div><button mat-icon-button (click)="cancel()"><mat-icon>close</mat-icon></button></div>
+
+    </div>
+    <div class="card-body">
+        <mat-stepper orientation="vertical" [linear]="false" class="bg-transparent">
+            <mat-step [stepControl]="studentPrimaryDetails" label="Students Primary Info"
+                errorMessage="Student Primary details are required.">
+                <ng-template matStepContent>
+                    <form class="row my-2" [formGroup]="studentPrimaryDetails">
+                        <label>Admission Date</label>
+                        <input type="text" mwlFlatpickr (blur)="updateValue('admissionDate',$event)"
+                            [convertModelValue]="true" class="form-control" [allowInput]="true" mask="0000-00-00"
+                            [value]="addmissionDate | date: 'YYYY-MM-dd'" placeholder="YYYY-MM-DD">
+                            <div *ngIf="addmissionDatef?.touched && addmissionDatef?.invalid">
+                                <small class="small text-danger" *ngIf="addmissionDatef?.errors?.required">Admission Date is
+                                    mandatory</small>
+                            </div>
+                        <div class="my-1"></div>
+                        <label class="">First Name</label>
+                        <input type="text" class="form-control" formControlName="studentFirstName"
+                            [ngClass]="studentFirstNamef?.touched && studentFirstNamef?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentFirstNamef?.touched && studentFirstNamef?.invalid">
+                            <small class="small text-danger" *ngIf="studentFirstNamef?.errors?.required">Firstname is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label class="">Last Name</label>
+                        <input type="text" class="form-control" formControlName="studentLastName"
+                            [ngClass]="studentLastNamef?.touched && studentLastNamef?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentLastNamef?.touched && studentLastNamef?.invalid">
+                            <small class="small text-danger" *ngIf="studentLastNamef?.errors?.required">LastName is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label class="">Father Name</label>
+                        <input type="text" class="form-control" formControlName="studentFatherName"
+                            [ngClass]="studentFatherNamef?.touched && studentFatherNamef?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentFatherNamef?.touched && studentFatherNamef?.invalid">
+                            <small class="small text-danger" *ngIf="studentFatherNamef?.errors?.required">FatherName is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label class="">Mother Name</label>
+                        <input type="text" class="form-control" formControlName="studentMotherName"
+                            [ngClass]="studentMotherNamef?.touched && studentMotherNamef?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentMotherNamef?.touched && studentMotherNamef?.invalid">
+                            <small class="small text-danger" *ngIf="studentMotherNamef?.errors?.required">MotherName is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label class="">Gender</label>
+                        <select class="form-select" formControlName="studentGender"
+                            [ngClass]="studentGenderf?.touched && studentGenderf?.invalid ? 'is-invalid' : ''">
+                            <option value="">--</option>
+                            <option *ngFor="let item of gender" [value]="item.value">{{item.label}}
+                            </option>
+                        </select>
+                        <div *ngIf="studentGenderf?.touched && studentGenderf?.invalid">
+                            <small class="small text-danger" *ngIf="studentGenderf?.errors?.required">Gender is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+
+                        <label class="">Class</label>
+                        <select class="form-select" formControlName="studentClass"
+                            [ngClass]="studentClassf?.touched && studentClassf?.invalid ? 'is-invalid' : ''">
+                            <option value="">--</option>
+
+                            <option *ngFor="let item of classes" [value]="item.value">{{item.label}}
+                            </option>
+                        </select>
+                        <div *ngIf="studentClassf?.touched && studentClassf?.invalid">
+                            <small class="small text-danger" *ngIf="studentClassf?.errors?.required">Class is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Student DOB</label>
+                        <input type="text" mwlFlatpickr (change)="updateValue('studentDOB',$event)"
+                            [convertModelValue]="true" class="form-control" [allowInput]="true" mask="0000-00-00"
+                            [value]="studentDOB | date: 'YYYY-MM-dd'" placeholder="YYYY-MM-DD">
+                        <div class="my-1"></div>
+                    </form>
+                    <div class="mt-2">
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </ng-template>
+            </mat-step>
+            <mat-step [stepControl]="studentReligionDetails" label="Students Secondary Info"
+                errorMessage="Student Secondary details are required.">
+                <ng-template matStepContent>
+                    <form class="row my-2" [formGroup]="studentReligionDetails">
+                        <label>Caste</label>
+                        <input type="text" class="form-control" formControlName="studentCaste"
+                            [ngClass]="studentCastef?.touched && studentCastef?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentCastef?.touched && studentCastef?.invalid">
+                            <small class="small text-danger" *ngIf="studentCastef?.errors?.required">Caste is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Sub Caste</label>
+                        <input type="text" class="form-control" formControlName="studentSubCaste"
+                            [ngClass]="studentSubCastef?.touched && studentSubCastef?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentSubCastef?.touched && studentSubCastef?.invalid">
+                            <small class="small text-danger" *ngIf="studentSubCastef?.errors?.required">Sub Caste is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Community</label>
+                        <select class="form-select" formControlName="studentCommunity"
+                            [ngClass]="studentCommunityf?.touched && studentCommunityf?.invalid ? 'is-invalid' : ''">
+                            <option value="">--</option>
+                            <option *ngFor="let item of community" [value]="item.value">{{item.label}}
+                            </option>
+                        </select>
+
+                        <div *ngIf="studentCommunityf?.touched && studentCommunityf?.invalid">
+                            <small class="small text-danger" *ngIf="studentCommunityf?.errors?.required">Sub Caste is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Religion</label>
+                        <input type="text" class="form-control" formControlName="studentReligion"
+                            [ngClass]="studentReligionf?.touched && studentReligionf?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentReligionf?.touched && studentReligionf?.invalid">
+                            <small class="small text-danger" *ngIf="studentReligionf?.errors?.required">Religion is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                    </form>
+                    <div class="d-flex justify-content-between my-2">
+                        <div>
+
+                            <button mat-button matStepperPrevious>Back</button>
+                        </div>
+                        <div>
+
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </div>
+                </ng-template>
+            </mat-step>
+            <mat-step [stepControl]="studentIdDetails" label="Students Identity Info"
+                errorMessage="Student Identity details are required.">
+                <ng-template matStepContent>
+                    <form class="row my-2" [formGroup]="studentIdDetails">
+                        <label>Aadhar number</label>
+                        <input type="text" class="form-control" formControlName="studentAadharNumber"
+                            mask="0000-0000-0000" placeholder="XXXX-XXXX-XXXX"
+                            [ngClass]="studentAadharNumberf?.touched && studentAadharNumberf?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentAadharNumberf?.touched && studentAadharNumberf?.invalid">
+                            <small class="small text-danger" *ngIf="studentAadharNumberf?.errors?.required">Aadhar
+                                number is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Nationality</label>
+                        <input type="text" class="form-control" formControlName="studentNationality"
+                            [ngClass]="studentNationalityf?.touched && studentNationalityf?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentNationalityf?.touched && studentNationalityf?.invalid">
+                            <small class="small text-danger" *ngIf="studentNationalityf?.errors?.required">Nationality
+                                is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Blood Group</label>
+                        <select class="form-select" formControlName="studentBloodGroup"
+                            [ngClass]="studentBloodGroupf?.touched && studentBloodGroupf?.invalid ? 'is-invalid' : ''">
+                            <option value="">--</option>
+                            <option *ngFor="let item of bloodGroup" [value]="item.value">{{item.label}}
+                            </option>
+                        </select>
+
+                        <div *ngIf="studentBloodGroupf?.touched && studentBloodGroupf?.invalid">
+                            <small class="small text-danger" *ngIf="studentBloodGroupf?.errors?.required">Mentioning
+                                Blood Group is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Language known</label>
+                        <input type="text" class="form-control" formControlName="studentLangaugeKnown"
+                            [ngClass]="studentLangaugeKnownf?.touched && studentLangaugeKnownf?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentLangaugeKnownf?.touched && studentLangaugeKnownf?.invalid">
+                            <small class="small text-danger" *ngIf="studentLangaugeKnownf?.errors?.required">Language known
+                                is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Mother Toungue</label>
+                        <input type="text" class="form-control" formControlName="studentMotherToungue"
+                            [ngClass]="studentMotherTounguef?.touched && studentMotherTounguef?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentMotherTounguef?.touched && studentMotherTounguef?.invalid">
+                            <small class="small text-danger" *ngIf="studentMotherTounguef?.errors?.required">Mother Toungue
+                                is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                    </form>
+                    <div class="d-flex justify-content-between my-2">
+                        <div>
+
+                            <button mat-button matStepperPrevious>Back</button>
+                        </div>
+                        <div>
+
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </div>
+                </ng-template>
+            </mat-step>
+            <mat-step [stepControl]="studentFeesRelatedInfoDetails" label="Students Fees Info"
+                errorMessage="Student Fees details are required.">
+                <ng-template matStepContent>
+                    <form class="row my-2" [formGroup]="studentFeesRelatedInfoDetails">
+                        <label>EMI Number</label>
+                        <input type="text" class="form-control" formControlName="studentEMINo"
+                            [ngClass]="studentEMINof?.touched && studentEMINof?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentEMINof?.touched && studentEMINof?.invalid">
+                            <small class="small text-danger" *ngIf="studentEMINof?.errors?.required">EMI
+                                number is
+                                mandatory</small>
+                        </div>
+                        <div class="my-1"></div>
+                        <label>Previous School</label>
+                        <input type="text" class="form-control" formControlName="studentPreviousSchool"
+                            [ngClass]="studentPreviousSchoolf?.touched && studentPreviousSchoolf?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentPreviousSchoolf?.touched && studentPreviousSchoolf?.invalid">
+                            <small class="small text-danger" *ngIf="studentPreviousSchoolf?.errors?.required">Previous
+                                School
+                                is
+                                mandatory</small>
+                        </div>
+
+                        <div class="my-1"></div>
+                        <label>Discount</label>
+                        <input type="text" class="form-control" formControlName="studentDiscount" placeholder="00"
+                            mask="00"
+                            [ngClass]="studentDiscountf?.touched && studentDiscountf?.invalid ? 'is-invalid' : ''">
+                        <div *ngIf="studentDiscountf?.touched && studentDiscountf?.invalid">
+                            <small class="small text-danger" *ngIf="studentDiscountf?.errors?.required">Discount
+                                is
+                                mandatory</small>
+                        </div>
+
+                        <div class="my-1"></div>
+
+                    </form>
+                    <div class="d-flex justify-content-between my-2">
+                        <div>
+
+                            <button mat-button matStepperPrevious>Back</button>
+                        </div>
+                        <div>
+
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </div>
+                </ng-template>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button [disabled]="!filledAllDetails" (click)="create()" *ngIf="(action === 'add')">Submit</button>
+                    <button mat-button [disabled]="!filledAllDetails" (click)="update()" *ngIf="(action === 'update')">Update</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div>
+</div>

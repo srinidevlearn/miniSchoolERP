@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div class="box" [formGroup]="loginForm">
+    <img class="logo" alt="logo" src="assets/images/login.svg"/>
+    <p class="signin">Sign in</p>
+    <div class="my-3">
+
+    </div>
+
+    <input name="username" type="text" placeholder="Username or Email" [ngClass]="usernamef?.touched && usernamef?.invalid ? 'border-danger' : ''" formControlName="username">
+    <div *ngIf="usernamef?.touched && usernamef?.invalid" class="text-danger">
+        <small class="d-block small text-danger error" style="height: 2.15rem;">Username Required</small>
+    </div>
+    <div class="my-2"></div>
+    <input name="password" type="password" placeholder="Password" required [ngClass]="passwordf?.touched && passwordf?.invalid ? 'border-danger' : ''" formControlName="password">
+    <div *ngIf="passwordf?.touched && passwordf?.invalid" class="text-danger">
+        <small class="d-block small text-danger error" style="height: 2.15rem;">Password Required</small>
+    </div>
+    <div class="my-1"></div>
+
+    <button type="button" [disabled]="!loginForm.valid" [class.disabled]="!loginForm.valid" (click)="signin()">Sign In</button>
+    <p class="foot-txt">Forgot your password?</p>
+    <p class="foot-txt">Not a memeber? <span class="bold">Sign up now</span></p>
+</div>

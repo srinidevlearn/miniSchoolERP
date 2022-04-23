@@ -13,7 +13,6 @@ import { FeesComponentApiService } from '../../service/fees-component-api.servic
   providers: [AutoUnSubscribeService],
 })
 export class FeesdetailsComponent implements OnInit {
- 
   action!: action;
   actionState: boolean = false;
   loading: boolean = false;
@@ -29,7 +28,7 @@ export class FeesdetailsComponent implements OnInit {
   gridApi: any;
   gridColumnApi: any;
   selectedNodes: any;
-
+  toggleFilters:boolean = false
   constructor(private api: FeesComponentApiService) {}
 
   ngOnInit(): void {
@@ -38,35 +37,41 @@ export class FeesdetailsComponent implements OnInit {
       .pipe()
       .subscribe((d: any) => {
         this.feesComponents = [...d];
-        console.log(d)
+        console.log(d);
       });
   }
 
   captureFormAction(e: { type: action; data?: any }) {
     this.action = e.type;
-    this.closeSideNav()
+    this.closeSideNav();
     // if(e.data) this.singleFeesComponent = {...this.singleFeesComponent,...e.data}
   }
-  editSideNav(data:any){
-    this.singleFeesComponent = {...data}
-    this.action = 'add'
+  editSideNav(data: any) {
+    this.singleFeesComponent = { ...data };
+    this.action = 'add';
   }
 
-  closeSideNav(){
+  closeSideNav() {
     this.actionState = false;
   }
-  openSideNav(){
+  openSideNav() {
     this.actionState = true;
   }
   columnDefs: ColDef[] = [
-
-    { field: 'tenurePeriod',filter:'agTextColumnFilter' },
-    { field: 'term1',filter: 'agNumberColumnFilter' },
-    { field: 'term2',filter: 'agNumberColumnFilter' },
-    { field: 'term3',filter: 'agNumberColumnFilter' },
-    { field: 'books',filter: 'agNumberColumnFilter' },
-    { field: 'uniform',filter: 'agNumberColumnFilter' },
-    { field: 'shoes',filter: 'agNumberColumnFilter' },
+    {
+      field: 'tenurePeriod',
+      filter: 'agTextColumnFilter',
+      filterParams: {
+        buttons: ['reset', 'apply'],
+        debounceMs: 200,
+      },
+    },
+    { field: 'term1', filter: 'agNumberColumnFilter' },
+    { field: 'term2', filter: 'agNumberColumnFilter' },
+    { field: 'term3', filter: 'agNumberColumnFilter' },
+    { field: 'books', filter: 'agNumberColumnFilter' },
+    { field: 'uniform', filter: 'agNumberColumnFilter' },
+    { field: 'shoes', filter: 'agNumberColumnFilter' },
     {
       headerName: 'Action',
       field: '',
@@ -81,7 +86,6 @@ export class FeesdetailsComponent implements OnInit {
             this.editSideNav(data);
           }
           if (field === 'add') {
-          
           }
         },
       },
@@ -93,9 +97,18 @@ export class FeesdetailsComponent implements OnInit {
       },
     },
   ];
-  defaultColDefinition = { ...defaultColDefinition };
-
- onGridReady(params: any) {
+  defaultColDefinition = { ...defaultColDefinition,...{floatingFilter:this.toggleFilters} };
+  
+  addFilters(){
+    this.toggleFilters = !this.toggleFilters
+    this.defaultColDefinition = {...defaultColDefinition,...{floatingFilter:this.toggleFilters}}
+    // this.gridApi.redrawRows();
+  }
+  exportCSV() {
+    // return this.gridApi.exportDataAsCsv();
+    let d = this.gridApi.getDataAsCsv();
+  }
+  onGridReady(params: any) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     // this.gridApi.getPinnedBottomRow(0).data

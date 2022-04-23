@@ -11,24 +11,24 @@ export class DataService implements InMemoryDbService {
       tenureConfig,
       orgConfig,
       feesComponentConfig,
-      organizationConfig
+      organizationConfig,
     };
   }
 }
 export const organizationConfig = Array(1000)
-.fill(0)
-.map(i=>{
-  let  orgFormModel: any = {
-    name: 'test org',
-    category: 'school',
-    address: 'test',
-    city: 'Chennai',
-    state: 'TN',
-    country: 'IN',
-    pincode: '600119',
-  };
-  return orgFormModel;
-})
+  .fill(0)
+  .map((i) => {
+    let orgFormModel: any = {
+      name: 'test org',
+      category: 'school',
+      address: 'test',
+      city: 'Chennai',
+      state: 'TN',
+      country: 'IN',
+      pincode: '600119',
+    };
+    return orgFormModel;
+  });
 export const feesComponentConfig = Array(1000)
   .fill(0)
   .map((itm, ind) => {
@@ -66,7 +66,6 @@ export const tenure = Array(10)
   .fill(0)
   .map((itm, ind) => {
     let tenureNum = 2020 + ind;
-    console.log(tenureNum)
     return `${tenureNum}-${tenureNum + 1}`;
   });
 
@@ -81,6 +80,27 @@ export const orgConfig = Array(1000)
     };
     return temp;
   });
+let printAddressDist  = (ind:number) => {
+  if (ind % 2 == 0) return 'Madurai';
+  if (ind % 3 == 0) return 'Erode';
+  if (ind % 1 == 0) return 'Theni';
+  if (ind % 5 == 0) return 'Trichy';
+  return 'Chennai'
+};
+export const address = new Array(100).fill(0).map((i, ind) => {
+  return {
+    addmissionNo: ind + 1,
+    studentName: `Student ${ind + 1}`,
+    printAddressType: ind % 2 == 0 ? 'Residents' : 'Permanent',
+    printAddressAdd1: `Loreum ipsum building\door no\Flat no`,
+    printAddressAdd2: `Loreum ipsum street info`,
+    printAddressAdd3: `landmark optional`,
+    printAddressAdd4: `city name`,
+    printAddressDist:printAddressDist(ind),
+    printAddressAdd5: 'Tamil Nadu',
+     printAddressPstlCd:600091
+  };
+});
 
 export const products = [
   {

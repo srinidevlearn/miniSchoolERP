@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 import { debounceTime, of, take } from 'rxjs';
+import { AgGridBottomSheetComponent } from '../table/table.component';
 
 @Component({
   selector: 'app-action-btn',
   templateUrl: './action-btn.component.html',
-  styleUrls: ['./action-btn.component.scss']
+  styleUrls: ['./action-btn.component.scss'],
 })
-export class ActionBtnComponent implements ICellRendererAngularComp,OnInit {
+export class ActionBtnComponent implements ICellRendererAngularComp, OnInit {
   private params: any;
-  renderMenuButton:string[]=[]
+  menuButtonUIState: boolean = false;
+  renderMenuButton: string[] = [];
 
-  constructor() { }
+  constructor(private _bottomSheet: MatBottomSheet) {}
   agInit(params: ICellRendererParams): void {
     this.params = params;
   }
@@ -20,24 +23,30 @@ export class ActionBtnComponent implements ICellRendererAngularComp,OnInit {
     return false;
   }
 
-
-  btnClickedHandler(value:string) {
-    let {data} = this.params
-
-   this.params.clicked(value,data);
+  btnClickedHandler(value: string) {
+    let { data } = this.params;
+    this.menuButtonUIState = false;
+    this.params.clicked(value, data);
   }
 
-  dynamicallyLoadMenu(){
-    of(true).pipe(debounceTime(500),take(1)).subscribe(d=>{
-      this.renderMenuButton = this.params.values
-      // console.log(this.renderMenuButton,this.params,this.params.values)
-    })
-    
+  dynamicallyLoadMenu() {
+    of(true)
+      .pipe(debounceTime(500), take(1))
+      .subscribe((d) => {
+        this.renderMenuButton = this.params.values;
+        this.menuButtonUIState = true;
+      });
   }
-  ngOnInit(): void {
+  openBottomSheets() {
+    let data = {
+      columnDefinition: this.params?.columnApi?.columnModel?.columnDefs,
+      data: this.params.data,
+    };
+    if (data.columnDefinition)
+      this._bottomSheet.open(AgGridBottomSheetComponent, {
+        data: data,
+      });
   }
-  ngOnDestroy():void{
-
-  }
-
+  ngOnInit(): void {}
+  ngOnDestroy(): void {}
 }

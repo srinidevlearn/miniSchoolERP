@@ -1,35 +1,60 @@
 <mat-drawer-container class="example-container h-100" autoSize>
-    <mat-drawer class="sideForm" mode="side" #feesComponentSideNavList [opened]="actionState" [position]="'end'"
-        [disableClose]="true">
-        <app-fees-forms [action]="action" [feesComponentConfig]="singleFeesComponent" (formAction)="captureFormAction($event)"></app-fees-forms>
-    </mat-drawer>
-    <mat-drawer-content>
-        <div class="bg-gradient top-rounded-borders text-white text-center py-2 position-sticky top-0"
-            style="z-index: 100;">Fees Component Config List
-        </div>
-        <ng-container *ngTemplateOutlet="feesComponentList"></ng-container>
-    </mat-drawer-content>
+  <mat-drawer
+    class="sideForm"
+    mode="side"
+    #feesComponentSideNavList
+    [opened]="actionState"
+    [position]="'end'"
+    [disableClose]="true"
+  >
+    <app-fees-forms
+      [action]="action"
+      [feesComponentConfig]="singleFeesComponent"
+      (formAction)="captureFormAction($event)"
+    ></app-fees-forms>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="bg-gradient top-rounded-borders text-white text-center py-2 px-2 position-sticky top-0 d-flex justify-content-between"
+      style="z-index: 100">
+      <div>Fees Component Config List</div>
+      <div class="d-flex">
+          <div><button type="button" class="btn btn-sm text-white" [disabled]="gridApi" (click)="addFilters()">{{toggleFilters ? 'Remove' : 'Add'}} Floating Filters</button></div>
+        <div><button type="button" class="btn btn-sm text-white" [disabled]="gridApi" >Export As CSV</button></div>
+      </div>
+    </div>
+    <ng-container *ngTemplateOutlet="feesComponentList"></ng-container>
+  </mat-drawer-content>
 </mat-drawer-container>
 
 <ng-template #feesComponentList>
-    <ng-container *ngIf="!feesComponents?.length">
-        <div class="card shadow-sm text-center border-0">
-            <div class="card-body fs-6">Need to add Fees Components on Tenure basis to display</div>
-            <div class="card-body">
-                <button mat-raised-button class="bg-primary text-white" (click)="openSideNav()">
-                    <mat-icon>add_circle</mat-icon> Create Tenure Based Fees Components
-                </button>
-            </div>
-
-        </div>
-    </ng-container>
-    <ng-container *ngIf="feesComponents.length">
-        <app-table [tableStyle]="{'height': 750 }" class="ag-theme-balham" [rowData]="feesComponents"
-            [defaultColDef]="defaultColDefinition" [rowSelection]="'single'" [rowMultiSelectWithClick]="false"
-            (selectionChanged)="onSelectionChanged($event)" (gridReady)="onGridReady($event)"
-            [columnDefs]="columnDefs">
-
-        </app-table>
-    
-    </ng-container>
+  <ng-container *ngIf="!feesComponents?.length">
+    <div class="card shadow-sm text-center border-0">
+      <div class="card-body fs-6">
+        Need to add Fees Components on Tenure basis to display
+      </div>
+      <div class="card-body">
+        <button
+          mat-raised-button
+          class="bg-primary text-white"
+          (click)="openSideNav()"
+        >
+          <mat-icon>add_circle</mat-icon> Create Tenure Based Fees Components
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="feesComponents.length">
+    <app-table
+      [tableStyle]="{ height: 750 }"
+      class="ag-theme-balham"
+      [rowData]="feesComponents"
+      [defaultColDef]="defaultColDefinition"
+      [rowSelection]="'single'"
+      [rowMultiSelectWithClick]="false"
+      (selectionChanged)="onSelectionChanged($event)"
+      (gridReady)="onGridReady($event)"
+      [columnDefs]="columnDefs"
+    >
+    </app-table>
+  </ng-container>
 </ng-template>

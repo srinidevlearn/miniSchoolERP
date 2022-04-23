@@ -1,17 +1,8 @@
-<ag-grid-angular
-  [ngStyle]="_style"
-  class="ag-theme-balham"
-  [rowData]="rowData"
-  
-  [defaultColDef]="defaultColDef"
-  [rowSelection]="rowSelection"
-  [rowMultiSelectWithClick]="rowMultiSelectWithClick"
-  (cellMouseOver)="onCellMouseOver($event)"
-  (selectionChanged)="onSelectionChanged($event)"
-  (gridReady)="onGridReady($event)"
-  [columnDefs]="columnDefs"
- [suppressDragLeaveHidesColumns]="stopcolumnDrag"
->
+<ag-grid-angular [ngStyle]="_style"
+[rowClass]="'shadow-sm'"
+class="ag-theme-balham" [rowData]="rowData" [defaultColDef]="defaultColDef" [animateRows]="false"
+  [rowSelection]="rowSelection" [rowMultiSelectWithClick]="rowMultiSelectWithClick" 
+  (cellMouseOver)="onCellMouseOver($event)" (selectionChanged)="onSelectionChanged($event)"
+  [debounceVerticalScrollbar]="true"
+  (gridReady)="onGridReady($event)" [columnDefs]="columnDefs" [suppressDragLeaveHidesColumns]="stopcolumnDrag">
 </ag-grid-angular>
-
-

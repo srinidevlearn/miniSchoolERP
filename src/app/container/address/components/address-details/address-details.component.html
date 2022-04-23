@@ -1,0 +1,12 @@
+<mat-drawer-container class="example-container h-100">
+    <mat-drawer class="sideForm" mode="side" #addressConfigComp [opened]="actionState" [position]="'end'"
+        [disableClose]="true">
+        <app-address-form></app-address-form>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="bg-gradient top-rounded-borders text-white text-center py-2 position-sticky top-0"
+            style="z-index: 100;">Address Configuration List
+        </div>
+        <!-- <ng-container *ngTemplateOutlet="orgConfigLists"></ng-container> -->
+    </mat-drawer-content>
+</mat-drawer-container>

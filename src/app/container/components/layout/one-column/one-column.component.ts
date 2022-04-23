@@ -6,6 +6,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
 import { AutoUnSubscribeService } from 'src/app/shared/services/auto-unsubscribe/auto-un-subscribe.service';
 import { RootMenu } from 'src/app/utility/utility';
 import { RouterString } from 'src/app/utility/enums/routerStringDeclaration.enum';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-one-column-layout',
@@ -39,6 +40,7 @@ export class OneColumnComponent {
     private breakpointObserver: BreakpointObserver,
     private cdr: ChangeDetectorRef,
     private router:Router,
+    private storage:LocalStorageService,
     private destroy$:AutoUnSubscribeService
   ) {
     this.menuIems = this.menuIems.map(i=>{
@@ -91,5 +93,10 @@ export class OneColumnComponent {
     if (event instanceof NavigationError) {
       this.loadingNavProgress = false
     }
+  }
+
+  logout(){
+    this.storage.removeAll();
+    this.router.navigateByUrl(`${RouterString.AUTH}/${RouterString.LOGIN}`)
   }
 }

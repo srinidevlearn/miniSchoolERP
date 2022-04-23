@@ -17,6 +17,7 @@ export const enum RouterString{
    USERCONFIG = 'userConfig',
    CONTAINER = 'pages',
    CLASSCONFIG = 'classConfig',
+   STUDENTDETAILS = 'student-details',
    ROLECONFIG = 'roleConfig',
    FEESCOMPONENTCONFIG ='feesComponentsConfig'
 }
