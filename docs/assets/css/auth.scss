@@ -1,0 +1,178 @@
+:host{
+    display: grid;
+    
+    place-items: center;
+    height: 100vh;
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Work+Sans: 400,500,600");
+html,
+body {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: auto;
+}
+
+body {
+  background: #f3f4f4;
+  font-family: "Work Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.box {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 40px 0 rgba(110, 89, 194,0.4);
+  display: flex;
+  flex-direction: column;
+  height: 31.25rem;
+  position: absolute;
+  width: 18.75rem;
+}
+
+.logo,
+.signin,
+input,
+button,
+.foot-txt,
+.signin-row {
+  margin: 0 auto;
+  position: relative;
+}
+
+.logo {
+  height: 4.125rem;
+  margin-top: 1.875rem;
+  width: 4.125rem;
+}
+
+p {
+  color: #444;
+}
+
+.signin {
+  font: 600 1.8rem "Work Sans", sans-serif;
+  padding: 0.17em;
+}
+
+.signin-row {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.625rem auto 0.3rem;
+  padding: 0.625rem;
+  width: 11rem;
+}
+
+.signin-row > i {
+  color: #444;
+  font-size: 2rem;
+  transition: all 0.15s ease-out;
+  -webkit-transition: all 0.15s ease-out;
+}
+
+.signin-text {
+  color: #9da3a5;
+  font: 500 0.85rem "Work Sans", sans-serif;
+  margin: 0;
+  padding-top: 0.625rem;
+  text-align: center;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+.ic1:hover {
+  color: #1da1f2;
+}
+
+.ic2:hover {
+  color: #3b5998;
+}
+
+.ic3:hover {
+  color: #4285f4;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #9da3a5;
+  font: 500 0.9rem "Work Sans", sans-serif, sans-serif;
+  height: 2.15em;
+  margin-top: 0.7em;
+  transition: all 0.15s ease-out;
+  -webkit-transition: all 0.15s ease-out;
+  width: 80%;
+}
+
+.error{
+    margin-left: 2rem;
+}
+.disabled{
+    opacity: 0.4;
+}
+input:focus {
+  border-bottom: 2px solid #6e59c2;
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: #9da3a5;
+}
+
+::-moz-placeholder {
+  color: #9da3a5;
+}
+
+:-ms-input-placeholder {
+  color: #9da3a5;
+}
+
+:-moz-placeholder {
+  color: #9da3a5;
+}
+
+button {
+  background: var(--bs-gradient-violet);
+  border: 0;
+  border-radius: 1.4em;
+  color: #fff;
+  font: 1.1rem "Work Sans", sans-serif;
+  margin: 1.7em auto 0.6em;
+  outline: none;
+  padding: 0.6em;
+  transition: all 0.15s ease-out;
+  -webkit-transition: all 0.15s ease-out;
+  width: 80%;
+}
+
+// button:hover {
+//   background: #444;
+//   cursor: pointer;
+// }
+
+button:focus {
+  outline: none;
+}
+
+.foot-txt {
+  color: #9da3a5;
+  font: 500 0.85rem "Work Sans", sans-serif;
+  padding: 0.3em;
+}
+
+.foot-txt:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: 600;
+}
